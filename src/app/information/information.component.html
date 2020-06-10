@@ -1,0 +1,42 @@
+<div class="row d-flex justify-content-center">
+  <h4 class="modal-header text-wrap text-center">Select date to see history of temperature in Vilnius</h4>
+
+</div>
+
+<div class="row d-flex justify-content-center">
+    <div class="col-md-8 d-flex justify-content-center">
+      <div class="col-md-5 d-flex justify-content-center">
+        <ngb-datepicker (dateSelect)="onDateSelect($event)"
+                        [startDate]="startDate"
+                        [minDate]="minDate"
+                        [maxDate]="maxDate">
+
+        </ngb-datepicker>
+      </div>
+      <div class="col-md-7 d-flex justify-content-center align-items-center" *ngIf="informationArray.length>0">
+        <div class="col-md-5 col-xs-6 ">
+          <p class="float-right float-sm-center">
+            Date selected:
+            {{getNiceDateString()}}
+          </p>
+        </div>
+        <div class="col-md-7 col-xs-6 float-left">
+          <p class="mx-auto" id="avgTemp">Average temperature: {{getAverage()}} &#8451;</p>
+
+          <p class="mx-auto" id="maxTemp">Max temperature: {{getMax()}} &#8451;</p>
+
+          <p class="mx-auto" id="minTemp">Min temperature: {{getMin()}} &#8451;</p>
+        </div>
+      </div>
+
+    </div>
+
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <app-line-chart
+      [informationArray]="informationArray"
+      *ngIf="informationArray.length>0">
+    </app-line-chart>
+  </div>
+</div>
