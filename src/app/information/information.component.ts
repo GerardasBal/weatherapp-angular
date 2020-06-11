@@ -54,6 +54,7 @@ export class InformationComponent implements OnInit, OnChanges {
   onDateSelect(date: any) {
     this.dateSelected = new Date(date.year, date.month - 1, date.day);
     this.getByDate(date);
+    this.getDatesFromServer();
   }
 
   getByDate(date: any) {
